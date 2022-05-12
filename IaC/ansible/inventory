@@ -1,0 +1,5 @@
+
+[TEST_VVM_SERVERS]
+
+server_VVM1 ansible_host=192.168.56.10
+server_VVM2 ansible_host=192.168.56.20
