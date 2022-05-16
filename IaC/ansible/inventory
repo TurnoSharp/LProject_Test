@@ -3,3 +3,4 @@
 
 server_VVM1 ansible_host=192.168.56.10
 server_VVM2 ansible_host=192.168.56.20
+Server_VVM3 ansible_host=192.168.56.23
