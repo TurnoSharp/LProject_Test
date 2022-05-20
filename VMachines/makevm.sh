@@ -15,9 +15,13 @@ vagrant init
 echo "/VMachines/vagrant_vm$n/.vagrant" >> /home/turnosharp/LProject_Test/.gitignore
 
 #configure Vagrantfile
+#cp ssh_pub_key in vm on first boot
 sed -i "12r ../config.vm.provision" ./Vagrantfile
-sed -i "41c\config.vm.network "private_network", ip: "192.168.56.2$n""  ./Vagrantfile
+#create config.vm.network
+pn=private_network
+ip=192.168.56.2$n
+vfvmip=$(echo config.vm.network \"${pn}\", ip: \"${ip}\")
+sed -i "41c\ $vfvmip"  ./Vagrantfile
 
 #add ip new VM in ansible.inventory
-cd /home/turnosharp/LProject_Test/IaC/ansible
-echo "Server_VVM$n ansible_host=192.168.56.2$n" >> ./inventory
+echo "Server_VVM$n ansible_host=192.168.56.2$n" >> /home/turnosharp/LProject_Test/IaC/ansible/inventory/hosts
