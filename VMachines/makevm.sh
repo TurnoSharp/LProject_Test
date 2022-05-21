@@ -18,9 +18,7 @@ echo "/VMachines/vagrant_vm$n/.vagrant" >> /home/turnosharp/LProject_Test/.gitig
 #cp ssh_pub_key in vm on first boot
 sed -i "12r ../config.vm.provision" ./Vagrantfile
 #create config.vm.network
-pn=private_network
-ip=192.168.56.2$n
-vfvmip=$(echo config.vm.network \"${pn}\", ip: \"${ip}\")
+vfvmip=$(echo config.vm.network \"private_network\", ip: \"192.168.56.2$n\")
 sed -i "41c\ $vfvmip"  ./Vagrantfile
 
 #add ip new VM in ansible.inventory
